@@ -11,6 +11,7 @@ import salesRoutes from './routes/sales.js'
 
 
 dotenv.config()
+mongoose.set('strictQuery', false)
 const app = express()
 
 app.use(express.json())
@@ -24,3 +25,19 @@ app.use('/client', clientRoutes)
 app.use('/general', generalRoutes)
 app.use('/management', managementRoutes)
 app.use('/sales', salesRoutes)
+
+const PORT = process.env.PORT || 9000
+
+const start = async () => {
+   try {
+       await mongoose.connect(process.env.DB_KEY, () => {
+           console.log('db started')
+           app.listen(PORT, () => {
+               console.log(`Server Port: ${PORT}`)
+           })
+       })
+   }catch (e) {
+       console.log(e)
+   }
+}
+start()
