@@ -8,8 +8,10 @@ import clientRoutes from './routes/client.js'
 import generalRoutes from './routes/general.js'
 import managementRoutes from './routes/management.js'
 import salesRoutes from './routes/sales.js'
-import {dataUser} from "./data/index.js";
+import {dataUser, dataProduct, dataProductStat} from "./data/index.js";
 import User from "./models/User.js";
+import Product from "./models/Product.js";
+import ProductState from "./models/ProductState.js";
 
 
 dotenv.config()
@@ -23,10 +25,6 @@ app.use(helmet.crossOriginResourcePolicy({policy: 'cross-origin'}))
 app.use(morgan('common'))
 
 
-app.use('/client', clientRoutes)
-app.use('/general', generalRoutes)
-app.use('/management', managementRoutes)
-app.use('/sales', salesRoutes)
 
 const PORT = process.env.PORT || 9000
 
@@ -44,6 +42,8 @@ const start = async () => {
                console.log(`Server Port: ${PORT}`)
            })
            // User.insertMany(dataUser)
+           // Product.insertMany(dataProduct)
+           // ProductState.insertMany(dataProductStat)
        })
    }catch (e) {
        console.log(e)
