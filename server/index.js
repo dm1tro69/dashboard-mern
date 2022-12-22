@@ -8,6 +8,8 @@ import clientRoutes from './routes/client.js'
 import generalRoutes from './routes/general.js'
 import managementRoutes from './routes/management.js'
 import salesRoutes from './routes/sales.js'
+import {dataUser} from "./data/index.js";
+import User from "./models/User.js";
 
 
 dotenv.config()
@@ -28,6 +30,8 @@ app.use('/sales', salesRoutes)
 
 const PORT = process.env.PORT || 9000
 
+
+
 const start = async () => {
    try {
        await mongoose.connect(process.env.DB_KEY, () => {
@@ -35,6 +39,7 @@ const start = async () => {
            app.listen(PORT, () => {
                console.log(`Server Port: ${PORT}`)
            })
+           // User.insertMany(dataUser)
        })
    }catch (e) {
        console.log(e)
