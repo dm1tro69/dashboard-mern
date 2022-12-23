@@ -8,11 +8,12 @@ import clientRoutes from './routes/client.js'
 import generalRoutes from './routes/general.js'
 import managementRoutes from './routes/management.js'
 import salesRoutes from './routes/sales.js'
-import {dataUser, dataProduct, dataProductStat, dataTransaction} from "./data/index.js";
+import {dataUser, dataProduct, dataProductStat, dataTransaction, dataOverallStat} from "./data/index.js";
 import User from "./models/User.js";
 import Product from "./models/Product.js";
 import ProductState from "./models/ProductState.js";
 import Transaction from "./models/Transaction.js";
+import overallState from "./models/OverallState.js";
 
 
 dotenv.config()
@@ -46,6 +47,7 @@ const start = async () => {
            // Product.insertMany(dataProduct)
            // ProductState.insertMany(dataProductStat)
            // Transaction.insertMany(dataTransaction)
+           // overallState.insertMany(dataOverallStat)
        })
    }catch (e) {
        console.log(e)
